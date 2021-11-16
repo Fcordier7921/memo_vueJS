@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+</head>
+<style>
+    canvas {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+</style>
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js mémo</h1>
+        <!--symtaxe moustache-->
+        <p>{{message}}</p>
+        <p>{{presentation()}}{{calcule(10)}}</p>
+        <!--binder les datas avec un atribus -->
+        <a v-bind:href="URLVueJS">le site vue Js </a><br>
+        <a :href="URLVueJS">sit idem </a><br>
+
+        <img v-bind:src="URLImg" alt="image de google">
+        <br>
+        <!--Compteur basique-->
+        <button v-on:click="incrementer">augementer</button>
+        <!--on bind ave un methode le bouton-->
+        <button v-on:click="diminuer">diminuer</button>
+        <h2>Compteur : {{compteur}}</h2><br>
+        <canvas v-on:mousemove="coords"></canvas>
+        <br>
+        <p>{{x}} /{{y}}</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--cdn de vue js-->
+
+    <script>
+        new Vue({ //instance de vue
+            el: '#mon-app', //lier les éléments a l'html 
+            data: { //données
+                message: 'Hello Vue!',
+                nb: 5,
+                URLVueJS: 'https://vuejs.org/',
+                URLImg: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+                compteur: 0,
+                x: 0,
+                y: 0,
+            },
+            methods: { //des méthose avec des fonctions !important ne pas utiliser de fonction fléché
+                presentation: function() {
+                    return this.message + ' Bonjoue, j\'utilise vue js'; // le this fait référence a nos data
+                },
+                calcule: function(b) {
+                    return ` et je fai des calcule ${this.nb}+${b}=${this.nb+b}`;
+                },
+                incrementer: function() {
+                    this.compteur++;
+                },
+                diminuer: function() {
+                    this.compteur--;
+                },
+                coords: function(event) {
+                    this.x = event.offsetX;
+                    this.y = event.offsetY;
+                }
+            },
+        })
+    </script>
+</body>
+
+
+
+</html>
