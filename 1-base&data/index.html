@@ -35,6 +35,21 @@
         <canvas v-on:mousemove="coords"></canvas>
         <br>
         <p>{{x}} /{{y}}</p>
+
+
+        <!--once permet de le faire qu'un seul fois-->
+        <button v-on:click.once="foo">Clique moi once</button>
+        <div v-on:click="foo2">
+            <p>Lorem, ipsum.
+                <button v-on:click.stop="foo2">Clique moi once</button>
+                <!--evité la propagetion des deux click, en mettent stop il rete le clique uniquemen de la div-->
+            </p>
+
+        </div>
+        <!--prevent pour prévenir le comportement par défaut des formulaire-->
+        <form v-on:submit.prevent="onSubmint">
+            <button>valider</button>
+        </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
     <!--cdn de vue js-->
@@ -67,6 +82,12 @@
                 coords: function(event) {
                     this.x = event.offsetX;
                     this.y = event.offsetY;
+                },
+                foo: function() {
+                    console.log("clique");
+                },
+                foo2: function() {
+                    console.log("clique");
                 }
             },
         })
