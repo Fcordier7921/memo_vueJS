@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .bordure {
+            border: 10px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js mémo partie </h1>
+        <button v-on:click="toggleColor = !toggleColor">changer de couleur</button>
+        <div v-bind:class="[objCSS, toggleColor ? 'bordure':'']"></div>
+        <!--pour simplifier l'écriture on dois créer un fonction dan computed qui de rajouter les classe que l'on soite, mais on peut aussi faire passer un tableau d'élément que l'on veut-->
+        <!--autre mehtéthode :
+           
+        <div class="box" v-bind:class="{red: toggleColor }"></div>
+    on enléve la computed  objCSS pour le me^me résultat -->
+        <!--autre mehtéthode :
+            on rajoute box: true dans les data
+        <div v-bind:class="{box, red: toggleColor }"></div>
+    on enléve la computed  objCSS pour le même résultat -->
+        <!--autre mehtéthode :
+            avec computed sans tableau
+        <div v-bind:class="objCSS"></div>
+    en rajoutant dans la computed  objCSS pour le même résultat -->
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--cdn de vue js-->
+
+    <script>
+        new Vue({ //instance de vue
+            el: '#mon-app', //lier les éléments a l'html 
+            data: { //données
+                toggleColor: false,
+            },
+            computed: {
+                objCSS: function() {
+                    return {
+                        red: this.toggleColor,
+                        box: true //c'est le non de cette propriété qui va étre envoyer dans la classe 
+                    }
+                }
+            }
+
+        })
+    </script>
+</body>
+
+
+
+</html>

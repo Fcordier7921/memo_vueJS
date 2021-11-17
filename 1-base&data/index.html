@@ -19,6 +19,10 @@
     <div id="mon-app">
         <h1>Vue js mémo</h1>
         <!--symtaxe moustache-->
+        <!--on peut mette dans al syntaxe moustache 
+            on peut mettre des expression comme 2+3 ou augementer++ 
+            on mette des oprerateur ternaire comme {{compteur  ? 'il est true' : ' il est false'}}
+            on peut mettre de l'html brut en ajoutent v-htrml="vdfvd" -->
         <p>{{message}}</p>
         <p>{{presentation()}}{{calcule(10)}}</p>
         <!--binder les datas avec un atribus -->
@@ -27,71 +31,25 @@
 
         <img v-bind:src="URLImg" alt="image de google">
         <br>
-        <!--Compteur basique-->
-        <button v-on:click="incrementer">augementer</button>
-        <!--on bind ave un methode le bouton-->
-        <button v-on:click="diminuer">diminuer</button>
-        <h2>Compteur : {{compteur}}</h2><br>
-        <canvas v-on:mousemove="coords"></canvas>
-        <br>
-        <p>{{x}} /{{y}}</p>
 
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+        <!--cdn de vue js-->
 
-        <!--once permet de le faire qu'un seul fois-->
-        <button v-on:click.once="foo">Clique moi once</button>
-        <div v-on:click="foo2">
-            <p>Lorem, ipsum.
-                <button v-on:click.stop="foo2">Clique moi once</button>
-                <!--evité la propagetion des deux click, en mettent stop il rete le clique uniquemen de la div-->
-            </p>
+        <script>
+            new Vue({ //instance de vue
+                el: '#mon-app', //lier les éléments a l'html 
+                data: { //données
+                    message: 'Hello Vue!',
+                    nb: 5,
+                    URLVueJS: 'https://vuejs.org/',
+                    URLImg: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+                    compteur: 0,
+                    x: 0,
+                    y: 0,
+                },
 
-        </div>
-        <!--prevent pour prévenir le comportement par défaut des formulaire-->
-        <form v-on:submit.prevent="onSubmint">
-            <button>valider</button>
-        </form>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-    <!--cdn de vue js-->
-
-    <script>
-        new Vue({ //instance de vue
-            el: '#mon-app', //lier les éléments a l'html 
-            data: { //données
-                message: 'Hello Vue!',
-                nb: 5,
-                URLVueJS: 'https://vuejs.org/',
-                URLImg: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
-                compteur: 0,
-                x: 0,
-                y: 0,
-            },
-            methods: { //des méthose avec des fonctions !important ne pas utiliser de fonction fléché
-                presentation: function() {
-                    return this.message + ' Bonjoue, j\'utilise vue js'; // le this fait référence a nos data
-                },
-                calcule: function(b) {
-                    return ` et je fai des calcule ${this.nb}+${b}=${this.nb+b}`;
-                },
-                incrementer: function() {
-                    this.compteur++;
-                },
-                diminuer: function() {
-                    this.compteur--;
-                },
-                coords: function(event) {
-                    this.x = event.offsetX;
-                    this.y = event.offsetY;
-                },
-                foo: function() {
-                    console.log("clique");
-                },
-                foo2: function() {
-                    console.log("clique");
-                }
-            },
-        })
-    </script>
+            })
+        </script>
 </body>
 
 

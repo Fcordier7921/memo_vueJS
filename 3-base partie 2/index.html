@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+</head>
+<style>
+    canvas {
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+</style>
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js mémo partie 2</h1>
+        <img src="" alt="">
+        <!--Compteur basique-->
+        <button v-on:click="incrementer">augementer</button>
+        <!--on bind ave un methode le bouton-->
+        <button v-on:click="diminuer">diminuer</button>
+        <h2>Compteur : {{compteur}}</h2><br>
+        <br>
+        <br>
+        <br>
+        <p>ton nom</p>
+        <input type="text" v-on:keyup.enter="impFunc">
+        <!--le enter corespont a la touche entre, il y a d'autre dans la doc 'taper sur google =>vue js key modifiers'-->
+        <p>ton nom est:(récuperation en data</p>
+        <input type="text" v-model="valeur">
+        <!--v-model permet de lier mes data a mon formulaire-->
+        <p>{{ valeur }}</p>
+
+
+
+
+        <p v-html="htmlBrut"></p>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--cdn de vue js-->
+
+    <script>
+        new Vue({ //instance de vue
+            el: '#mon-app', //lier les éléments a l'html 
+            data: { //données
+                message: 'Hello Vue!',
+                nb: 5,
+                URLVueJS: 'https://vuejs.org/',
+                URLImg: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png',
+                compteur: 0,
+                x: 0,
+                y: 0,
+                valeur: "",
+                htmlBrut: "<h5>je suis un titre 5</h5><p>dskjflhsqdkh</p>"
+
+            },
+            methods: { //des méthose avec des fonctions !important ne pas utiliser de fonction fléché
+                presentation: function() {
+                    return this.message + ' Bonjoue, j\'utilise vue js'; // le this fait référence a nos data
+                },
+                calcule: function(b) {
+                    return ` et je fai des calcule ${this.nb}+${b}=${this.nb+b}`;
+                },
+                incrementer: function() {
+                    this.compteur++;
+                },
+                diminuer: function() {
+                    this.compteur--;
+                },
+                coords: function(event) {
+                    this.x = event.offsetX;
+                    this.y = event.offsetY;
+                },
+                foo: function() {
+                    console.log("clique");
+                },
+                foo2: function() {
+                    console.log("clique");
+                },
+                impFunc: function() {
+                    console.log("tu as appyer sur une touche");
+                },
+
+
+            },
+        })
+    </script>
+</body>
+
+
+
+</html>

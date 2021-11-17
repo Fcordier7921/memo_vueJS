@@ -41,6 +41,15 @@
                     return this.compteur > 10 ? 'plus grand que 10' : 'plus petit que 10';
                 }
             },
+            watch: {
+                //watch permet de surveiller les changement dans les données et de faire des actions en conséquence
+                compteurA: function() {
+                    let ctx = this;
+                    setTimeout(function() {
+                        ctx.compteurA = 0;
+                    }, 2000);
+                }
+            },
             computed: {
                 // cette méthode et appeller a chaque fois que la donné compteurA , mais si on clique sur compteurB elle ne sera pas appelé
                 memo: function() {

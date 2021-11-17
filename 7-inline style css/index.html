@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .bordure {
+            border: 10px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js mémo partie </h1>
+        <p :style="{backgroundColor:'lightblue'}">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto necessitatibus perspiciatis odio, incidunt alias eveniet at quasi mollitia error velit!</p>
+        <!--bien mettre le guillement pour les valeur des propriété css et le propriété son écrit en camecaise-->
+        <p :style="nonStyle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto necessitatibus perspiciatis odio, incidunt alias eveniet at quasi mollitia error velit!</p>
+        <!---->
+
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--cdn de vue js-->
+
+    <script>
+        new Vue({ //instance de vue
+            el: '#mon-app', //lier les éléments a l'html 
+            data: { //données
+                toggleColor: false,
+                color: 'red',
+                width: 200
+            },
+            computed: {
+                nonStyle: function() {
+                    return {
+                        backgroundColor: this.color,
+                        width: this.width + "px"
+                    };
+                },
+
+            }
+
+        })
+    </script>
+</body>
+
+
+
+</html>
