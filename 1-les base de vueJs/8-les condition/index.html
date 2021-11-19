@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .bordure {
+            border: 10px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js mémo partie </h1>
+        <button v-on:click="toggleBox = !toggleBox">Toggle la coleur</button>
+
+        <div v-if="toggleBox" class="box red"></div>
+        <!--si j'ai toggleBox a true alors je l'affiche-->
+        <p v-else="toggleBox">Sinon</p>
+        <!--si non je met ce text, le v-else doit être aprés le v-if pour que ca fonctionne-->
+
+        <p v-if="numb ===1">La valeur est 1</p>
+        <p v-else-if="numb ===2">La valeur est 2</p>
+        <p v-else-if="numb ===3">La valeur est 3</p>
+        <p v-else>La valeur n'est ni 1, ni 2, ni 3</p>
+        <!--si la valeur est 1 alors je met ce text, sinon si la valeur est 2 alors je met ce text, sinon si la valeur est 3 alors je met ce text, sinon je met ce text-->
+
+        <!--bloc de rendu conditionelle-->
+        <!--permet d'emglober tout un groupe mais sans que la balise template apparaisse dans le dom-->
+        <template v-if="toggleBox">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, doloremque.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, doloremque.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, doloremque.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, doloremque.</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, doloremque.</p>
+        </template>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <!--cdn de vue js-->
+
+    <script>
+        new Vue({ //instance de vue
+            el: '#mon-app', //lier les éléments a l'html 
+            data: { //données
+                numb: 10,
+                toggleBox: true,
+
+            }
+        })
+    </script>
+</body>
+
+
+
+</html>

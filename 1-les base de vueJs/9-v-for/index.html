@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+    <style>
+        .box {
+            width: 250px;
+            height: 250px;
+            border: 1px solid black;
+        }
+        
+        .red {
+            background-color: red;
+        }
+        
+        .bordure {
+            border: 10px solid black;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="mon-app">
+        <h1>Vue js mémo partie </h1>
+        <button v-on:click="toggleBox = !toggleBox">Toggle la coleur</button>
+
+        <div v-if="toggleBox" class="box red"></div>
+
+        <p v-else="toggleBox">Sinon</p>
+
+
+        <!--boucle for avec vue Js-->
+        <ul>
+            <li v-for="nb in tableau">{{ nb }}</li>
+        </ul>
+        <!--boucle avec leur index-->
+        <ul>
+            <li v-for="(fruit, index) in tableauFruit">{{ index+1 }} {{ fruit }}</li>
+        </ul>
+        <!--boucler sur les propriété d'un objet-->
+        <ul>
+            <li v-for="(val, props) in objetChat">{{ props }}: {{ val }}</li>
+        </ul>
+        <!--boucler dans un tableau sur les propriété d'un objet-->
+        <ul>
+            <li v-for="obj in passion">
+                <div v-for="(val, props) in obj">{{ props }} : {{ val }}</div>
+            </li>
+        </ul>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+    <script>
+        new Vue({
+            el: '#mon-app',
+            data: {
+                tableau: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                tableauFruit: ["fraise", "Pomme", "poire", "banane", "cerise"],
+                toggleBox: true,
+                objetChat: {
+                    nom: "Miaou",
+                    age: 3,
+                    couleur: "blanc"
+                },
+                passion: [{
+                    nom: "drone fpv",
+                    type: "pilotage en imertion",
+                    niveau: "intermediaire"
+                }, {
+                    nom: "JavaScript",
+                    type: "pprogramation",
+                    niveau: "débutant"
+                }, {
+                    nom: "informatique",
+                    type: "ardaiwre et software",
+                    niveau: "intermediaire"
+                }, {
+                    nom: "menuiserie",
+                    type: "travail du bois",
+                    niveau: "débutant"
+                }, {
+                    nom: "aviation",
+                    type: "pilotage d'avions quadriplace",
+                    niveau: "intermediaire"
+                }, ]
+
+            }
+        })
+    </script>
+</body>
+
+
+
+</html>

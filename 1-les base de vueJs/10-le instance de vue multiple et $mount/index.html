@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue Js memo</title>
+
+</head>
+
+
+<body>
+    <div id="mon-app">
+        <h1>{{ txt }} </h1>
+
+
+    </div>
+    <div id="mon-app2">
+        <h1>{{ txt }} </h1>
+
+        <BUtton v-on:click="changeTxt">CHANGEMENT</BUtton>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+
+    <script>
+        const inst1 = new Vue({
+            el: '#mon-app',
+            data: {
+                txt: "hello app1"
+
+            }
+        })
+
+        const inst2 = new Vue({
+            el: '#mon-app2',
+            data: {
+                txt: "hello app2"
+            },
+            methods: {
+                changeTxt: function() {
+                    inst1.txt = " app1 je t'ai changer"
+                }
+            },
+        })
+    </script>
+</body>
+
+
+
+</html>

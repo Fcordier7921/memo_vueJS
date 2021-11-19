@@ -30,7 +30,7 @@
         <p :style="{backgroundColor:'lightblue'}">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto necessitatibus perspiciatis odio, incidunt alias eveniet at quasi mollitia error velit!</p>
         <!--bien mettre le guillement pour les valeur des propriété css et le propriété son écrit en camecaise-->
         <p :style="nonStyle">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto necessitatibus perspiciatis odio, incidunt alias eveniet at quasi mollitia error velit!</p>
-        <!---->
+        <!--on place juste le non de la proprité -->
 
 
 
@@ -51,7 +51,7 @@
                     return {
                         backgroundColor: this.color,
                         width: this.width + "px"
-                    };
+                    }; // on retourn un objet avec les propriété css qu'on a renseigne dans les data
                 },
 
             }
