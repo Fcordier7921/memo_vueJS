@@ -6,8 +6,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 //bis a évenement
 export const bus = new Vue();
 import Contenu from './components/Contenu.vue' //on importe notre component
+import ContenuAPI from './components/ContenuAPI.vue' //on importe notre component
 
 Vue.component('contenu', Contenu); //on permet de 
+Vue.component('contenuAPI', ContenuAPI); //on permet de 
 
 Vue.config.productionTip = false
 

@@ -17,12 +17,14 @@
 
     <modale :revele="revele" :toggleModale="toggleModale"></modale>
     <div v-on:click="toggleModale" class="btn btn-success">Ouvre la modale</div>
+    <formulaire></formulaire>
     </div>
 </template>
 <script>
 
 import liste from './liste/liste.vue'
 import Modale from "./madal.vue";
+import formulaire from "./formulaire.vue";
 
 export default {
     name: 'Contenu2',
@@ -51,7 +53,8 @@ export default {
     
     components: {
         'liste': liste,
-        'modale': Modale
+        'modale': Modale,
+        'formulaire': formulaire
     }
 }
 </script>

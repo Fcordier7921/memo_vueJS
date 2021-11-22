@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <header-top></header-top>
+    <contenuAPI></contenuAPI>
     <contenu></contenu><!--afficher le composant globale-->
     <contenu2></contenu2>
   </div>
